@@ -53,7 +53,7 @@
 	</div>
 </header>
 
-<main class="m-0! flex min-h-screen w-full justify-center px-10 pt-10 select-none">
+<main class="m-0! flex min-h-screen w-full justify-center px-10 pt-10">
 	<div class="container! prose lg:prose-xl dark:prose-invert">
 		{@render children()}
 	</div>

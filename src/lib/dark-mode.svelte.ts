@@ -6,7 +6,7 @@ class DarkModeContext {
 
 	constructor() {
 		if (browser) {
-			this.isDarkMode = localStorage.getItem('theme') === 'dark';
+			this.setMode(localStorage.getItem('theme') === 'dark');
 		}
 	}
 
@@ -21,6 +21,15 @@ class DarkModeContext {
 
 	getDarkMode() {
 		return this.isDarkMode;
+	}
+
+	setMode(mode: boolean) {
+		this.isDarkMode = mode;
+		if (this.isDarkMode) {
+			this.setDarkMode();
+		} else {
+			this.setLightMode();
+		}
 	}
 
 	setDarkMode() {
