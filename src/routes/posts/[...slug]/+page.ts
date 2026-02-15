@@ -22,11 +22,6 @@ export const load: PageLoad = async ({ params }) => {
 			throw error(500, 'Post metadata is invalid');
 		}
 
-		// Check if post is published (skip in development)
-		if (process.env.NODE_ENV === 'production' && post.metadata) {
-			throw error(404, 'Post not found');
-		}
-
 		return {
 			slug: post.slug,
 			metadata: post.metadata,
