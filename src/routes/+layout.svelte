@@ -15,46 +15,52 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <header
-	class="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b px-4 backdrop-blur-lg select-none"
+	class="sticky top-0 z-50 flex h-16 items-center justify-center border-b backdrop-blur-lg select-none"
 >
-	<Toggle.Root
-		size="lg"
-		variant="outline"
-		onPressedChange={() => darkModeContext.toggleDarkMode()}
-		pressed={darkModeContext.getDarkMode()}
-		class="cursor-pointer"
-	>
-		{#if darkModeContext.getDarkMode()}
-			<Moon />
-		{:else}
-			<Sun />
-		{/if}
-	</Toggle.Root>
-
-	<a href={resolve('/')} class="text-4xl"> BLOG </a>
-
-	<div class="flex items-center gap-x-1">
-		<Button.Root
-			href="https://github.com/jannabiforever"
-			target="_blank"
-			variant="ghost"
-			size="icon-lg"
+	<div class="container flex items-center justify-between">
+		<Toggle.Root
+			size="lg"
+			variant="outline"
+			onPressedChange={() => darkModeContext.toggleDarkMode()}
+			pressed={darkModeContext.getDarkMode()}
+			class="cursor-pointer"
 		>
-			<Github class="size-6" />
-		</Button.Root>
-		<Button.Root
-			href="https://instagram.com/4ortis_mane"
-			target="_blank"
-			variant="ghost"
-			size="icon-lg"
-		>
-			<Instagram class="size-6" />
-		</Button.Root>
+			{#if darkModeContext.getDarkMode()}
+				<Moon />
+			{:else}
+				<Sun />
+			{/if}
+		</Toggle.Root>
+
+		<a href={resolve('/')} class="text-4xl"> BLOG </a>
+
+		<div class="flex items-center gap-x-1">
+			<Button.Root
+				href="https://github.com/jannabiforever"
+				target="_blank"
+				variant="ghost"
+				size="icon-lg"
+			>
+				<Github class="size-6" />
+			</Button.Root>
+			<Button.Root
+				href="https://instagram.com/4ortis_mane"
+				target="_blank"
+				variant="ghost"
+				size="icon-lg"
+			>
+				<Instagram class="size-6" />
+			</Button.Root>
+		</div>
 	</div>
 </header>
 
-<main class="m-0! flex min-h-screen w-full justify-center px-10 pt-10">
+<main class="m-0! flex min-h-[calc(100vh-128px)] w-full justify-center px-10 pt-10">
 	<div class="container! prose lg:prose-xl dark:prose-invert">
 		{@render children()}
 	</div>
 </main>
+
+<footer class="flex h-16 w-full items-center justify-center border-t">
+	<div class="container">© 2026 Jungin Yu.</div>
+</footer>

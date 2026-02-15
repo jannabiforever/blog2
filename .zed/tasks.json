@@ -1,0 +1,7 @@
+[
+	{
+		"label": "Create a new post",
+		"command": "./.zed/create_new_post.sh",
+		"hide": "on_success"
+	}
+]
