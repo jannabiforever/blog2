@@ -1,0 +1,25 @@
+---
+title: "Brief introduction to my blog"
+date: "2026-02-17"
+summary: "Sketch of my blog"
+tags: ["blog", "introduction", "first-post"]
+---
+
+# Purpose?
+
+I already have a [blog](https://blog.naver.com/jungini1226), 
+but it is more like, a summary of my thoughts about social stuffs.
+
+This blog will be handled more like informational blogs.
+I could've used [`Obsidian Publish`](https://obsidian.md/publish), 
+but I found it more interesting to build one hands-on.
+
+# My main interests lie in...
+
+Most of the posts will be about software technologies.
+Pretty sure that I would post some math / physics some day.
+
+# Language
+
+Since this is a tech blog, so I'm just going to write all of the posts in english for better accessability.
+English is not my first language, so some expressions could sound a little bit awkward.

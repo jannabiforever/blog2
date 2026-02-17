@@ -1,0 +1,98 @@
+---
+title: "Context management in Svelte"
+date: "2026-02-17"
+summary: "Patterns for managing context in Svelte"
+tags: ["svelte", "context", "patterns"]
+---
+
+# State management
+
+I believe the most of concerns in frontend development lie in *state management*.
+This is because data presentations require to be synchronized finely.
+
+Backend servers don't. They don't present data much. 
+They just store them, and process, and calculates.
+Subscription pattern doesn't emerges often in backend (relatively).
+
+# How do you manage states in Svelte5?
+
+State-like variables (variables which multiple subscriber variable subscribes) are defined with rune systems.
+
+```svelte
+<script lang="ts">
+    let counter = $state(0);
+</script>
+
+<span>{counter}</span>
+```
+
+In the example above, the variable `counter` has some subscribers in DOM. (the span element)
+every re-assignment to it would change subscribers.
+
+The state variable would be initialized as the component is mounted, and freed as unmounted.
+
+You may propagate those state variables through props, if you want to expose explicit dependencies.
+
+```svelte
+<script lang="ts">
+    let counter = $state(0);
+</script>
+
+<SomeChild {counter} />
+```
+
+Let's think of the following situation.
+
+  You are going to implement a dark mode system.
+  So it is not heavily related to the core services of your app.
+  But to let most of your components rely on the theme,
+  you would need every component to have explicit dependency on single state variable.
+
+To solve this kind of problems efficiently, svelte provides the concept of `Context`.
+(For the example above, you might find theme system with css selector more easy... but just read between the line.)
+
+# Svelte5 context
+
+Context allows components to access values owned by parent components without passing them down as props 
+(potentially through many layers of intermediate components, known as ‘prop-drilling’).
+
+A context is initialized by calling `setContext()`:
+
+```svelte
+<script lang='ts'>
+    import { setContext } from 'svelte';
+    let stateVariable: TypeOfStateVariable = $state({ name: 'hello' });
+    const someState: TypeOfStateVariable = setContext(KEY, stateVariable);
+</script>
+```
+
+If the variable stored as context is declared with `$state` rune, then
+the state are shared within child components.
+
+It is very important to note that it is forced to call `setContext` during the component initialization,
+which is crucial to guarantee `getContext`s are called after the context is set, before the context is freed.
+
+So you might find why the hell the root app looks like a huge pile of provider stuffs.
+
+```svelte
+<SomeGreatFeatureProvider>
+    <SomeGoodFeatureProvider>
+        <SomeSolid5FeatureProvider>
+            <SomeBadFeatureProvider>
+                {@render children?.()}
+            </SomeBadFeatureProvider>
+        </SomeSolid5FeatureProvider>
+    </SomeGoodFeatureProvider>
+</SomeGreatFeatureProvider>
+```
+
+This is for restricting context, say lifetime. (you'll understand easily if you have experience in Rust.)
+
+So it is a bad pattern to have something like
+
+```svelte
+<SomeGreatFeatureProvider />
+{@render children?.()}
+```
+
+which, most of the svelte libraries just have.
