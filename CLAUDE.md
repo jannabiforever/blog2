@@ -22,6 +22,7 @@ No test suite is configured.
 ### Routing
 
 File-based routing under `src/routes/`:
+
 - `/` — home page with post list and rotating identity carousel
 - `/posts/[...slug]` — dynamic post detail, loads component lazily
 - `/profile` — author profile with tech stack grid
@@ -33,12 +34,13 @@ Each route pair: `+page.ts` (data loading) + `+page.svelte` (rendering).
 Posts live as MDsvex (`.svx`) files in `src/lib/posts/`. Adding a post = drop a `.svx` file there.
 
 **Frontmatter schema:**
+
 ```yaml
 ---
-title: "Post Title"
-date: "YYYY-MM-DD"
-summary: "Brief description"
-tags: ["tag1", "tag2"]
+title: 'Post Title'
+date: 'YYYY-MM-DD'
+summary: 'Brief description'
+tags: ['tag1', 'tag2']
 ---
 ```
 

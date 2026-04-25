@@ -55,10 +55,8 @@
 	</div>
 </header>
 
-<main
-	class="m-0! flex min-h-[calc(100vh-128px)] w-full justify-center px-4 pt-10 sm:px-6 lg:px-10"
->
-	<div class="container! prose lg:prose-xl dark:prose-invert">
+<main class="m-0! flex min-h-[calc(100vh-128px)] w-full justify-center px-4 pt-10 sm:px-6 lg:px-10">
+	<div class="prose w-full max-w-3xl lg:prose-xl dark:prose-invert">
 		{@render children()}
 	</div>
 </main>

@@ -134,3 +134,7 @@
 	font-size: 0.875em;
 	line-height: 1.6;
 }
+
+.prose :is(h1, h2, h3) {
+	scroll-margin-top: 5rem;
+}

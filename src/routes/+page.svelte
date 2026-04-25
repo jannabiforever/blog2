@@ -1,8 +1,6 @@
 <script lang="ts">
 	import * as Carousel from '$lib/components/ui/carousel';
 	import Autoplay from 'embla-carousel-autoplay';
-	import { resolve } from '$app/paths';
-	import Link from '$lib/components/Link.svelte';
 	import PostCard from '$lib/components/PostCard.svelte';
 
 	const identities = ['Jungin Yu', '유정인', 'a Software Developer'];
@@ -42,14 +40,11 @@
 
 	<article class="flex flex-col gap-0">
 		<p class="m-0!">I like to solve problems in sneaky ways.</p>
-		<div class="flex">
-			<Link href={resolve('/profile')}>Want to check out my profile?</Link>
-		</div>
 	</article>
 
 	<div class="flex flex-col gap-y-1">
 		<h3>Posts</h3>
-		<div class="grid grid-cols-1 gap-2 md:grid-cols-2">
+		<div class="grid grid-cols-1 gap-2">
 			{#each posts as post (post.title)}
 				<PostCard {...post} />
 			{:else}
