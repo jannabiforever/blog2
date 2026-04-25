@@ -126,3 +126,11 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+.shiki {
+	border-radius: 0.75rem;
+	padding: 1rem;
+	overflow-x: auto;
+	font-size: 0.875em;
+	line-height: 1.6;
+}

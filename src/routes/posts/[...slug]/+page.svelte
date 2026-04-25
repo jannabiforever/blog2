@@ -64,11 +64,11 @@
 	{/if}
 </svelte:head>
 
-<article class="px-4 py-8">
+<article class="mx-auto w-full max-w-3xl py-8">
 	{#if data.metadata}
 		<!-- Post Header -->
-		<div class="mb-8 border-b border-border pb-8">
-			<h1>{data.metadata.title}</h1>
+		<div class="not-prose mb-8 border-b border-border pb-8">
+			<h1 class="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">{data.metadata.title}</h1>
 
 			<div
 				class="mb-4 flex flex-col text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-4"
@@ -104,15 +104,19 @@
 			</div>
 		{:else if error}
 			<div class="py-12 text-center">
-				<h2 class="font-bold text-destructive">Error Loading Post</h2>
-				<p class="ext-muted-foreground">{error}</p>
+				<h2 class="text-xl font-bold text-destructive">Error Loading Post</h2>
+				<p class="text-muted-foreground">{error}</p>
 				<Link href={resolve('/')} arrowDir="left">Back to all posts</Link>
 			</div>
 		{:else if PostComponent}
-			<svelte:component this={PostComponent} />
+			<div
+				class="prose max-w-none lg:prose-lg dark:prose-invert prose-h1:text-2xl sm:prose-h1:text-3xl"
+			>
+				<svelte:component this={PostComponent} />
+			</div>
 		{:else}
 			<div class="py-12 text-center">
-				<h2 class="font-bold text-muted-foreground">Post Not Found</h2>
+				<h2 class="text-xl font-bold text-muted-foreground">Post Not Found</h2>
 				<p class="text-muted-foreground">The requested post content could not be loaded.</p>
 				<Link href={resolve('/')} arrowDir="left">Back to all posts</Link>
 			</div>
@@ -120,7 +124,7 @@
 	</main>
 
 	<!-- Post Footer -->
-	<footer class="mt-12 border-t border-border pt-8">
+	<footer class="not-prose mt-12 border-t border-border pt-8">
 		<Link href={resolve('/')} arrowDir="left">Back to home</Link>
 	</footer>
 </article>
